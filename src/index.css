@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 30% 8%;
+    --foreground: 45 30% 92%;
+
+    --card: 222 25% 12%;
+    --card-foreground: 45 30% 92%;
+
+    --popover: 222 25% 10%;
+    --popover-foreground: 45 30% 92%;
+
+    --primary: 38 65% 55%;
+    --primary-foreground: 222 30% 8%;
+
+    --secondary: 222 20% 15%;
+    --secondary-foreground: 45 20% 85%;
+
+    --muted: 222 15% 18%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 38 55% 48%;
+    --accent-foreground: 45 30% 92%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 15% 22%;
+    --input: 222 15% 22%;
+    --ring: 38 65% 55%;
+
+    --radius: 0.5rem;
+
+    --gold: 38 65% 55%;
+    --gold-light: 40 75% 68%;
+    --gold-dark: 36 55% 40%;
+    --cream: 42 35% 93%;
+    --charcoal: 222 30% 8%;
+    --charcoal-light: 222 25% 14%;
+    --navy: 222 40% 18%;
+    --navy-light: 222 30% 25%;
+
+    --sidebar-background: 222 25% 10%;
+    --sidebar-foreground: 45 30% 92%;
+    --sidebar-primary: 38 65% 55%;
+    --sidebar-primary-foreground: 222 30% 8%;
+    --sidebar-accent: 222 20% 16%;
+    --sidebar-accent-foreground: 45 30% 92%;
+    --sidebar-border: 222 15% 22%;
+    --sidebar-ring: 38 65% 55%;
+  }
+
+  .dark {
+    --background: 222 30% 8%;
+    --foreground: 45 30% 92%;
+    --card: 222 25% 12%;
+    --card-foreground: 45 30% 92%;
+    --popover: 222 25% 10%;
+    --popover-foreground: 45 30% 92%;
+    --primary: 38 65% 55%;
+    --primary-foreground: 222 30% 8%;
+    --secondary: 222 20% 15%;
+    --secondary-foreground: 45 20% 85%;
+    --muted: 222 15% 18%;
+    --muted-foreground: 220 10% 50%;
+    --accent: 38 55% 48%;
+    --accent-foreground: 45 30% 92%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 222 15% 22%;
+    --input: 222 15% 22%;
+    --ring: 38 65% 55%;
+    --sidebar-background: 222 25% 10%;
+    --sidebar-foreground: 45 30% 92%;
+    --sidebar-primary: 38 65% 55%;
+    --sidebar-primary-foreground: 222 30% 8%;
+    --sidebar-accent: 222 20% 16%;
+    --sidebar-accent-foreground: 45 30% 92%;
+    --sidebar-border: 222 15% 22%;
+    --sidebar-ring: 38 65% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+@layer components {
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, hsl(var(--gold-dark)), hsl(var(--gold)), hsl(var(--gold-light)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gold-border {
+    border-color: hsl(var(--gold) / 0.3);
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32 px-4 md:px-8;
+  }
+
+  .glass-card {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--gold) / 0.12);
+  }
+
+  .glass-card-hover {
+    background: hsl(var(--card) / 0.4);
+    backdrop-filter: blur(30px);
+    border: 1px solid hsl(var(--gold) / 0.08);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    background: hsl(var(--card) / 0.7);
+    border-color: hsl(var(--gold) / 0.35);
+    box-shadow: 0 8px 40px hsl(var(--gold) / 0.08), inset 0 1px 0 hsl(var(--gold) / 0.1);
+    transform: translateY(-6px);
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.12), transparent);
+    animation: shimmer 4s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 30px hsl(var(--gold) / 0.2), 0 0 60px hsl(var(--gold) / 0.1);
+  }
+
+  .gold-glow-text {
+    text-shadow: 0 0 20px hsl(var(--gold) / 0.4), 0 0 40px hsl(var(--gold) / 0.2);
+  }
+
+  .fancy-border {
+    position: relative;
+  }
+
+  .fancy-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, hsl(var(--gold) / 0.4), transparent, hsl(var(--gold) / 0.2)) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .ornament-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .ornament-line::before,
+  .ornament-line::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--gold) / 0.3), transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes float-rotate {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-15px) rotate(2deg); }
+    75% { transform: translateY(10px) rotate(-2deg); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px hsl(var(--gold) / 0.1); }
+    50% { box-shadow: 0 0 50px hsl(var(--gold) / 0.3), 0 0 100px hsl(var(--gold) / 0.12); }
+  }
+
+  @keyframes sparkle {
+    0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(180deg); }
+  }
+
+  .navy-gradient {
+    background: linear-gradient(135deg, hsl(222 30% 8%), hsl(222 40% 18%), hsl(222 30% 12%));
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px hsl(var(--gold) / 0.3);
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
