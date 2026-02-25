@@ -237,6 +237,10 @@
 }
 
 @layer utilities {
+  .py-2 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
   .text-balance {
     text-wrap: balance;
   }
