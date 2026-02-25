@@ -237,6 +237,10 @@
 }
 
 @layer utilities {
+  .left-1\/2 {
+    left: 45%;
+    transform: none;
+  }
   .py-2 {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
